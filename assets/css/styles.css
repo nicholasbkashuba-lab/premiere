@@ -872,6 +872,30 @@ h2.on-dark em,.why h2 em,.mission blockquote em{
   background:var(--grad-neural);opacity:.45}
 
 /* =========================================================
+   3D PARTICLE BRAIN (Who We Are)
+   ========================================================= */
+.brain-card{position:relative;overflow:hidden}
+.brain-card canvas{position:absolute;inset:0;width:100%;height:100%;display:block;cursor:grab;z-index:1}
+.brain-card::before{content:"";position:absolute;left:50%;top:50%;width:72%;height:72%;
+  transform:translate(-50%,-50%);border-radius:50%;pointer-events:none;
+  background:radial-gradient(circle,rgba(47,215,224,.15),rgba(109,94,252,.10) 45%,transparent 70%);
+  filter:blur(8px)}
+.brain-card::after{content:"";position:absolute;inset:0;pointer-events:none;z-index:2;
+  background:radial-gradient(90% 90% at 50% 50%,transparent 62%,rgba(5,15,27,.42) 100%)}
+
+/* =========================================================
+   REAL DOCTOR PHOTOS (assets/team/<slug>.jpg when present)
+   ========================================================= */
+.ld-portrait.has-photo img,.doctor-portrait.has-photo img{
+  position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center top}
+.ld-portrait.has-photo::after,.doctor-portrait.has-photo::after{
+  background:linear-gradient(180deg,transparent 62%,rgba(8,23,38,.30))}
+.ld-portrait.has-photo .ld-ring,.doctor-portrait.has-photo .ld-ring{z-index:1}
+.tcard-portrait{position:relative;overflow:hidden}
+.tcard-portrait.has-photo{border:1px solid rgba(47,215,224,.3)}
+.tcard-portrait.has-photo img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center top}
+
+/* =========================================================
    REVEAL ANIMATION
    ========================================================= */
 /* reveal only hides when JS is available (html.js), so no-JS users still see content */

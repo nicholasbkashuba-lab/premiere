@@ -395,11 +395,33 @@ DOCTORS = [
      "focus": ["Parkinson's disease", "Movement disorders", "Parkinson's clinical trials"]},
 ]
 
+def _photo_path(doc):
+    """Convention: assets/team/<slug>.jpg — used automatically when the file exists."""
+    p = f"assets/team/{doc['slug']}.jpg"
+    return p if os.path.exists(os.path.join(HERE, p)) else None
+
+def _portrait_html(doc, base_cls):
+    ph = _photo_path(doc)
+    if ph:
+        alt = f"{doc['name']}, {doc['suf']}".replace("&amp;", "&")
+        return (f'<div class="{base_cls} has-photo">'
+                f'<img src="{{p}}{ph}" alt="{esc(alt)}" loading="lazy">'
+                f'<span class="ld-ring" aria-hidden="true"></span></div>')
+    return (f'<div class="{base_cls}" aria-hidden="true">'
+            f'<span class="ld-monogram">{doc["mono"]}</span><span class="ld-ring"></span></div>')
+
+def _tcard_portrait(d):
+    ph = _photo_path(d)
+    if ph:
+        alt = f"{d['name']}, {d['suf']}".replace("&amp;", "&")
+        return f'<div class="tcard-portrait has-photo"><img src="{{p}}{ph}" alt="{esc(alt)}" loading="lazy"></div>'
+    return f'<div class="tcard-portrait" aria-hidden="true"><span>{d["mono"]}</span></div>'
+
 def render_tcards():
     out = []
     for d in DOCTORS:
         out.append(f"""        <article class="tcard reveal">
-          <div class="tcard-portrait" aria-hidden="true"><span>{d['mono']}</span></div>
+          {_tcard_portrait(d)}
           <h3>{d['name']}, <span class="tc-suf">{d['suf']}</span></h3>
           <p class="tc-role">{d['spec']}</p>
           <p>{d['short']}</p>
@@ -410,10 +432,7 @@ def render_tcards():
 def lead_doctor():
     facts = "\n".join(f"            <li><strong>{a}</strong> {b}</li>" for a, b in LEAD["facts"])
     return f"""      <article class="lead-doctor reveal">
-        <div class="ld-portrait" aria-hidden="true">
-          <span class="ld-monogram">{LEAD['mono']}</span>
-          <span class="ld-ring"></span>
-        </div>
+        {_portrait_html(LEAD, "ld-portrait")}
         <div class="ld-body">
           <p class="ld-role">{LEAD['role']}</p>
           <h3>{LEAD['name']}, {LEAD['suf']}</h3>
@@ -498,18 +517,9 @@ def home_body():
 
   <section class="section about" id="about">
     <div class="wrap about-grid">
-      <div class="about-visual reveal" aria-hidden="true">
-        <div class="orb-card">
-          <svg class="synapse-art" viewBox="0 0 320 360" role="img" aria-label="Abstract neural network illustration">
-            <defs>
-              <radialGradient id="og" cx="50%" cy="35%" r="75%"><stop offset="0%" stop-color="#2fd7e0" stop-opacity=".9"/><stop offset="55%" stop-color="#6d5efc" stop-opacity=".55"/><stop offset="100%" stop-color="#0e2a47" stop-opacity="0"/></radialGradient>
-              <linearGradient id="lg" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#2fd7e0"/><stop offset="100%" stop-color="#6d5efc"/></linearGradient>
-            </defs>
-            <circle cx="160" cy="150" r="140" fill="url(#og)"/>
-            <g stroke="url(#lg)" stroke-width="1.3" fill="none" opacity=".8"><path d="M70 90 160 150 250 110 200 230 110 250 70 90M160 150 110 250M160 150 200 230M70 90 110 250M250 110 200 230"/></g>
-            <g fill="#eafaff"><circle cx="70" cy="90" r="6"/><circle cx="160" cy="150" r="9"/><circle cx="250" cy="110" r="6"/><circle cx="200" cy="230" r="6"/><circle cx="110" cy="250" r="5"/></g>
-            <g fill="#2fd7e0"><circle cx="160" cy="150" r="4"/></g>
-          </svg>
+      <div class="about-visual reveal">
+        <div class="orb-card brain-card">
+          <canvas id="brainCanvas" role="img" aria-label="Interactive three-dimensional model of a human brain, rendered as a constellation of glowing connected points"></canvas>
         </div>
         <div class="orb-badge reveal"><strong>Est. in the heart of Palm Beach</strong><span>A dedicated neurological research center</span></div>
       </div>
@@ -1230,7 +1240,7 @@ def doctor_page_body(doc):
     body += f"""  <section class="section doctor">
     <div class="wrap doctor-grid">
       <aside class="doctor-aside reveal">
-        <div class="doctor-portrait" aria-hidden="true"><span>{doc['mono']}</span><span class="ld-ring"></span></div>
+        {_portrait_html(doc, "doctor-portrait")}
         <p class="ld-role">{role}</p>
         <p class="doctor-spec">{doc['spec']}</p>
         <p class="doctor-focus-label">Focus areas</p>

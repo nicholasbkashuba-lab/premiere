@@ -286,4 +286,144 @@
       start();
     }
   }
+
+  /* ---------- 3D particle brain (Who We Are) ---------- */
+  var brainC = document.getElementById("brainCanvas");
+  if (brainC && brainC.getContext) {
+    var bx = brainC.getContext("2d");
+    var BW = 0, BH = 0, bdpr = Math.min(window.devicePixelRatio || 1, 2);
+    var bPts = [], bEdges = [];
+    var TEAL = [88, 226, 233], VIOLET = [126, 112, 255];
+    var bPtr = { x: 0, y: 0, tx: 0, ty: 0 };
+    var bRaf = null, bOn = true, bT = 0;
+
+    // deterministic PRNG so the model is identical on every load
+    var bSeed = 1337;
+    function bRnd() {
+      bSeed |= 0; bSeed = bSeed + 0x6D2B79F5 | 0;
+      var t = Math.imul(bSeed ^ bSeed >>> 15, 1 | bSeed);
+      t = t + Math.imul(t ^ t >>> 7, 61 | t) ^ t;
+      return ((t ^ t >>> 14) >>> 0) / 4294967296;
+    }
+
+    function buildBrain() {
+      bPts = []; bEdges = [];
+      var N = 820;
+      for (var i = 0; i < N; i++) {
+        var u = bRnd() * 2 - 1, th = bRnd() * Math.PI * 2;
+        var s = Math.sqrt(Math.max(0, 1 - u * u));
+        var x = s * Math.cos(th), y = u, z = s * Math.sin(th);
+        var kind = bRnd(), p;
+        if (kind < 0.15) {
+          // cerebellum — tucked low at the back
+          p = { x: -0.78 + x * 0.40, y: -0.46 + y * 0.28, z: z * 0.55 };
+        } else if (kind < 0.19) {
+          // brainstem
+          p = { x: -0.44 + x * 0.14, y: -0.68 + y * 0.24, z: z * 0.14 };
+        } else {
+          // cerebrum
+          var px = x * 1.30, py = y * 0.94, pz = z * 1.04;
+          // cortical folds — gyri/sulci texture
+          var d = 1 + 0.06 * Math.sin(6.5 * px + 1.7) * Math.sin(8.3 * py) * Math.sin(7.1 * pz + 0.6);
+          px *= d; py *= d; pz *= d;
+          if (px > 0.62) py *= 0.90;                       // frontal taper
+          if (py < -0.5) py = -0.5 - (Math.abs(py) - 0.5) * 0.3; // flat underside
+          if (py > -0.05 && Math.abs(pz) < 0.09)           // longitudinal fissure
+            pz = (pz < 0 ? -1 : 1) * (0.09 + 0.02 * bRnd());
+          p = { x: px, y: py + 0.10, z: pz };
+        }
+        bPts.push(p);
+      }
+      // synaptic edges between near neighbours
+      for (var a = 0; a < bPts.length; a++) {
+        var links = 0;
+        for (var b = a + 1; b < bPts.length && links < 3; b++) {
+          var dx = bPts[a].x - bPts[b].x, dy = bPts[a].y - bPts[b].y, dz = bPts[a].z - bPts[b].z;
+          if (dx * dx + dy * dy + dz * dz < 0.05) { bEdges.push([a, b]); links++; }
+        }
+      }
+    }
+
+    function bSize() {
+      var r = brainC.getBoundingClientRect();
+      BW = r.width; BH = r.height;
+      brainC.width = Math.max(1, Math.floor(BW * bdpr));
+      brainC.height = Math.max(1, Math.floor(BH * bdpr));
+      bx.setTransform(bdpr, 0, 0, bdpr, 0, 0);
+    }
+
+    function bCol(t, alpha) {
+      var r = Math.round(TEAL[0] + (VIOLET[0] - TEAL[0]) * t);
+      var g = Math.round(TEAL[1] + (VIOLET[1] - TEAL[1]) * t);
+      var b2 = Math.round(TEAL[2] + (VIOLET[2] - TEAL[2]) * t);
+      return "rgba(" + r + "," + g + "," + b2 + "," + alpha.toFixed(3) + ")";
+    }
+
+    function bDraw() {
+      bT += 0.0038;
+      // eased pointer for a weighty, expensive feel
+      bPtr.x += (bPtr.tx - bPtr.x) * 0.06;
+      bPtr.y += (bPtr.ty - bPtr.y) * 0.06;
+      var rotY = bT + bPtr.x * 0.55, rotX = -0.14 + bPtr.y * 0.35;
+      var cosY = Math.cos(rotY), sinY = Math.sin(rotY);
+      var cosX = Math.cos(rotX), sinX = Math.sin(rotX);
+      var S = Math.min(BW, BH) * 0.315, CX = BW / 2, CY = BH / 2 + Math.sin(bT * 1.6) * 5;
+      bx.clearRect(0, 0, BW, BH);
+      var proj = new Array(bPts.length);
+      for (var i = 0; i < bPts.length; i++) {
+        var p = bPts[i];
+        var x1 = p.x * cosY - p.z * sinY, z1 = p.x * sinY + p.z * cosY;
+        var y1 = p.y * cosX - z1 * sinX, z2 = p.y * sinX + z1 * cosX;
+        var f = 2.9 / (2.9 - z2);
+        proj[i] = { x: CX + x1 * S * f, y: CY - y1 * S * f, z: z2, f: f };
+      }
+      bx.lineWidth = 1;
+      for (var e = 0; e < bEdges.length; e++) {
+        var A = proj[bEdges[e][0]], B = proj[bEdges[e][1]];
+        var zt = ((A.z + B.z) / 2 + 1.5) / 3;
+        bx.strokeStyle = bCol(1 - zt, 0.05 + zt * 0.17);
+        bx.beginPath(); bx.moveTo(A.x, A.y); bx.lineTo(B.x, B.y); bx.stroke();
+      }
+      for (var j = 0; j < bPts.length; j++) {
+        var P = proj[j];
+        var zt2 = (P.z + 1.5) / 3;
+        bx.fillStyle = bCol(1 - zt2, 0.30 + zt2 * 0.65);
+        bx.beginPath(); bx.arc(P.x, P.y, (0.7 + zt2 * 1.6) * P.f, 0, Math.PI * 2); bx.fill();
+      }
+    }
+
+    function bLoop() { bDraw(); bRaf = requestAnimationFrame(bLoop); }
+    function bStop() { if (bRaf) { cancelAnimationFrame(bRaf); bRaf = null; } }
+    function bStart() { if (!bRaf && bOn) bLoop(); }
+
+    var bCard = brainC.closest(".orb-card") || brainC;
+    bCard.addEventListener("pointermove", function (e) {
+      var r = bCard.getBoundingClientRect();
+      bPtr.tx = ((e.clientX - r.left) / r.width - 0.5) * 1.7;
+      bPtr.ty = ((e.clientY - r.top) / r.height - 0.5) * 1.2;
+    });
+    bCard.addEventListener("pointerleave", function () { bPtr.tx = 0; bPtr.ty = 0; });
+
+    var bResizeT;
+    window.addEventListener("resize", function () {
+      clearTimeout(bResizeT); bResizeT = setTimeout(function () { bSize(); }, 200);
+    });
+
+    bSize(); buildBrain();
+    if (reduceMotion) {
+      bT = 0.9; bDraw();          // elegant static three-quarter view
+    } else {
+      if ("IntersectionObserver" in window) {
+        new IntersectionObserver(function (en) {
+          bOn = en[0].isIntersecting && !document.hidden;
+          if (bOn) bStart(); else bStop();
+        }, { threshold: 0 }).observe(bCard);
+      }
+      document.addEventListener("visibilitychange", function () {
+        bOn = !document.hidden; if (bOn) bStart(); else bStop();
+      });
+      bStart();
+    }
+  }
+
 })();
