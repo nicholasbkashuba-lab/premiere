@@ -271,7 +271,7 @@ def cta_band():
     return """  <section class="section page-cta">
     <div class="page-cta-bg" aria-hidden="true"></div>
     <div class="wrap page-cta-inner">
-      <h2 class="on-dark reveal">See if you or a loved one may qualify.</h2>
+      <h2 class="on-dark reveal">See if you or a loved one <em>may qualify.</em></h2>
       <p class="section-sub on-dark reveal">It's free, confidential, and there's no obligation &mdash;
          a short conversation is all it takes to begin.</p>
       <div class="page-cta-actions reveal">
@@ -303,7 +303,7 @@ def why_grid():
     <div class="wrap">
       <div class="section-head center">
         <p class="eyebrow eyebrow-light reveal"><span class="eyebrow-dot"></span>Why participate</p>
-        <h2 class="on-dark reveal">More than a trial. A different kind of care.</h2>
+        <h2 class="on-dark reveal">More than a trial. A <em>different kind of care.</em></h2>
         <p class="section-sub on-dark reveal">Clinical research offers something standard appointments often can't:
            time, attention, and access to what medicine is about to become.</p>
       </div>
@@ -331,7 +331,7 @@ def process_section():
     <div class="wrap process-grid">
       <div class="process-intro">
         <p class="eyebrow reveal"><span class="eyebrow-dot"></span>The process</p>
-        <h2 class="reveal">From first call to first visit &mdash; simple, and at your pace.</h2>
+        <h2 class="reveal">From first call to first visit &mdash; <em>simple, and at your pace.</em></h2>
         <p class="lede reveal">Reaching out doesn't commit you to anything. It simply starts a conversation with our
            research team about whether a study might be right for you.</p>
         <a href="{{p}}contact.html" class="btn btn-primary reveal">Start the conversation</a>
@@ -515,7 +515,7 @@ def home_body():
       </div>
       <div class="about-copy">
         <p class="eyebrow reveal"><span class="eyebrow-dot"></span>Who we are</p>
-        <h2 class="reveal">A research institute devoted entirely to the brain.</h2>
+        <h2 class="reveal">A research institute devoted <em>entirely to the brain.</em></h2>
         <p class="lede reveal">Our neurologists work at the front lines of clinical research &mdash; testing the
           therapies that become tomorrow's standard of care. We exist for one purpose: to move neuroscience forward
           while giving our neighbors real access to what's next.</p>
@@ -536,7 +536,7 @@ def home_body():
     <div class="wrap">
       <div class="section-head center">
         <p class="eyebrow reveal"><span class="eyebrow-dot"></span>Research areas</p>
-        <h2 class="reveal">Four conditions. One relentless focus.</h2>
+        <h2 class="reveal">Four conditions. One <em>relentless focus.</em></h2>
         <p class="section-sub reveal">Our active and upcoming studies concentrate on the neurological conditions that
            touch the most families. Explore where you or a loved one might fit.</p>
       </div>
@@ -563,7 +563,7 @@ def home_body():
     <div class="wrap">
       <div class="section-head center">
         <p class="eyebrow reveal"><span class="eyebrow-dot"></span>Our team</p>
-        <h2 class="reveal">Led by neurologists who treat these conditions every day.</h2>
+        <h2 class="reveal">Led by neurologists who treat these conditions <em>every day.</em></h2>
         <p class="section-sub reveal">Research at Premiere is directed by physicians recognized nationally for their
            work in cognitive and neurological care.</p>
       </div>
@@ -577,7 +577,7 @@ def home_body():
   <section class="section mission">
     <div class="wrap mission-inner">
       <svg class="quote-mark" viewBox="0 0 48 48" width="56" height="56" aria-hidden="true"><path fill="currentColor" d="M20 34H8V22c0-7 4-11 12-12v5c-4 1-6 3-6 7h6v12zm20 0H28V22c0-7 4-11 12-12v5c-4 1-6 3-6 7h6v12z"/></svg>
-      <blockquote class="reveal">The best care and the next breakthrough should live under the same roof. That belief is why
+      <blockquote class="reveal">The best care and the next breakthrough should live <em>under the same roof</em>. That belief is why
         we exist &mdash; to give our neighbors in Palm Beach County a real seat at the frontier of neurology.</blockquote>
       <p class="mission-attr reveal">The mission of Premiere Research Institute</p>
     </div>
@@ -589,7 +589,7 @@ def home_body():
     <div class="wrap faq-grid">
       <div class="faq-intro">
         <p class="eyebrow reveal"><span class="eyebrow-dot"></span>Common questions</p>
-        <h2 class="reveal">What to know before you volunteer.</h2>
+        <h2 class="reveal">What to know <em>before you volunteer.</em></h2>
         <p class="lede reveal">Have a question we haven't answered? Our team is glad to talk it through &mdash; no pressure,
            no obligation.</p>
         <a href="tel:{SITE['phone_href']}" class="btn btn-outline reveal">{IC_PHONE} Call {SITE['phone_display']}</a>
@@ -612,7 +612,7 @@ def events_section(home=False):
     <div class="wrap events-grid">
       <div class="events-intro">
         <p class="eyebrow reveal"><span class="eyebrow-dot"></span>Community &amp; events</p>
-        <h2 class="reveal">Bringing brain-health science to the community.</h2>
+        <h2 class="reveal">Bringing brain-health science <em>to the community.</em></h2>
         <p class="lede reveal">Beyond the clinic, Dr. Paul Winner and our team speak at programs across the region &mdash;
           sharing the latest in Alzheimer's care, brain health, and neurological research with the patients,
           caregivers, and organizations who need it most.</p>
@@ -653,7 +653,7 @@ def newsletter_section(home=False):
     <div class="wrap news-grid">
       <div class="news-signup reveal">
         <p class="eyebrow"><span class="eyebrow-dot"></span>Stay connected</p>
-        <h2>Brain-healthy insights, right in your inbox.</h2>
+        <h2>Brain-healthy insights, <em>right in your inbox.</em></h2>
         <p class="section-sub">Join our newsletter for updates on clinical trials, educational programs,
            and resources designed to support you and your family.</p>
         <form class="news-form" id="newsForm" novalidate>
@@ -687,7 +687,7 @@ def enroll_section():
     <div class="wrap enroll-grid">
       <div class="enroll-info">
         <p class="eyebrow eyebrow-light reveal"><span class="eyebrow-dot"></span>See if you qualify</p>
-        <h2 class="on-dark reveal">Take the first step today.</h2>
+        <h2 class="on-dark reveal">Take the <em>first step</em> today.</h2>
         <p class="section-sub on-dark reveal">Share a few details and our research team will reach out to talk through
            the studies that may be right for you. It's free, confidential, and there's no obligation.</p>
         <ul class="contact-lines reveal">
@@ -831,7 +831,7 @@ def about_body():
   <section class="section mission">
     <div class="wrap mission-inner">
       <svg class="quote-mark" viewBox="0 0 48 48" width="56" height="56" aria-hidden="true"><path fill="currentColor" d="M20 34H8V22c0-7 4-11 12-12v5c-4 1-6 3-6 7h6v12zm20 0H28V22c0-7 4-11 12-12v5c-4 1-6 3-6 7h6v12z"/></svg>
-      <blockquote class="reveal">The best care and the next breakthrough should live under the same roof. That belief is why
+      <blockquote class="reveal">The best care and the next breakthrough should live <em>under the same roof</em>. That belief is why
         we exist &mdash; to give our neighbors in Palm Beach County a real seat at the frontier of neurology.</blockquote>
       <p class="mission-attr reveal">The mission of Premiere Research Institute</p>
     </div>

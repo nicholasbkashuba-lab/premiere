@@ -90,8 +90,18 @@ section[id]{scroll-margin-top:80px}
 .section-head{max-width:740px;margin-bottom:clamp(26px,3.2vw,42px)}
 .section-head.center{margin-inline:auto;text-align:center}
 .section-head.center .eyebrow{justify-content:center}
-h2{font-size:clamp(1.9rem,1.3rem + 2.6vw,3.1rem)}
+h2{font-size:clamp(1.95rem,1.3rem + 2.8vw,3.35rem);letter-spacing:-.015em}
 h3{font-size:clamp(1.2rem,1.05rem + .7vw,1.5rem)}
+/* italic gradient accent inside headlines — darker gradient on light bg for AA contrast */
+h2 em{font-style:italic;font-weight:400;
+  background:linear-gradient(115deg,var(--teal-ink) 10%,#5142d9 90%);
+  -webkit-background-clip:text;background-clip:text;
+  -webkit-text-fill-color:transparent;color:transparent;padding-right:.06em}
+h2.on-dark em,.why h2 em,.mission blockquote em{
+  background:var(--grad-neural);
+  -webkit-background-clip:text;background-clip:text;
+  -webkit-text-fill-color:transparent;color:transparent}
+.mission blockquote em{font-style:italic}
 .lede{font-size:clamp(1.08rem,1rem + .4vw,1.28rem);color:var(--body);line-height:1.6}
 .section-sub{font-size:clamp(1.02rem,.98rem + .3vw,1.18rem);color:var(--muted);margin-top:1rem}
 .on-dark{color:#fff}
@@ -341,8 +351,10 @@ h3{font-size:clamp(1.2rem,1.05rem + .7vw,1.5rem)}
 .wcard:hover{transform:translateY(-6px);border-color:rgba(47,215,224,.4);
   background:linear-gradient(160deg,rgba(255,255,255,.09),rgba(255,255,255,.03))}
 .wcard:hover::before{width:100%}
-.wcard-num{font-family:"Fraunces",serif;font-size:1.1rem;color:var(--teal);
-  letter-spacing:.05em;margin-bottom:1rem;opacity:.85}
+.wcard-num{font-family:"Fraunces",serif;font-size:2rem;font-weight:300;line-height:1;
+  letter-spacing:.02em;margin-bottom:1rem;
+  background:var(--grad-neural);-webkit-background-clip:text;background-clip:text;
+  -webkit-text-fill-color:transparent;color:transparent}
 .wcard h3{color:#fff;margin-bottom:.6rem;font-size:1.3rem}
 .wcard p{color:var(--dk-body);font-size:.98rem}
 
@@ -367,15 +379,19 @@ h3{font-size:clamp(1.2rem,1.05rem + .7vw,1.5rem)}
 /* =========================================================
    STAT BAND
    ========================================================= */
-.statband{background:var(--grad-neural);color:var(--midnight);position:relative;overflow:hidden}
+.statband{background:linear-gradient(160deg,#0b2138,var(--midnight));color:#fff;position:relative;overflow:hidden}
 .statband::before{content:"";position:absolute;inset:0;
-  background:radial-gradient(60% 100% at 50% 0%,rgba(255,255,255,.35),transparent 70%);opacity:.6}
+  background:radial-gradient(55% 100% at 18% 0%,rgba(47,215,224,.15),transparent 60%),
+            radial-gradient(50% 90% at 90% 100%,rgba(109,94,252,.18),transparent 60%)}
+.statband::after{content:"";position:absolute;left:0;right:0;top:0;height:1.5px;background:var(--grad-neural);opacity:.5}
 .statband-grid{position:relative;display:grid;grid-template-columns:repeat(4,1fr);gap:1.5rem;
-  padding-block:clamp(38px,4.2vw,58px);text-align:center}
-.statband-grid>div{display:flex;flex-direction:column;gap:.4rem;position:relative}
-.statband-grid>div:not(:last-child)::after{content:"";position:absolute;right:0;top:15%;height:70%;width:1px;background:rgba(8,23,38,.18)}
-.stat-n{font-family:"Fraunces",serif;font-size:clamp(2.4rem,1.6rem + 3vw,3.6rem);font-weight:400;line-height:1;color:var(--midnight)}
-.stat-l{font-size:.92rem;font-weight:600;color:rgba(8,23,38,.7);letter-spacing:.02em}
+  padding-block:clamp(42px,4.6vw,64px);text-align:center}
+.statband-grid>div{display:flex;flex-direction:column;gap:.45rem;position:relative}
+.statband-grid>div:not(:last-child)::after{content:"";position:absolute;right:0;top:15%;height:70%;width:1px;background:rgba(255,255,255,.09)}
+.stat-n{font-family:"Fraunces",serif;font-size:clamp(2.6rem,1.7rem + 3.4vw,4rem);font-weight:300;line-height:1.05;
+  background:var(--grad-neural);-webkit-background-clip:text;background-clip:text;
+  -webkit-text-fill-color:transparent;color:transparent;padding-bottom:.05em}
+.stat-l{font-size:.9rem;font-weight:600;color:var(--dk-body);letter-spacing:.03em}
 
 /* =========================================================
    TEAM
@@ -838,6 +854,22 @@ h3{font-size:clamp(1.2rem,1.05rem + .7vw,1.5rem)}
 .section-cta{margin-top:1.8rem}
 .research-foot{margin-top:1.6rem}
 .about-copy p+p{margin-top:.9rem}
+
+/* premium gradient hairline borders on feature cards */
+.lead-doctor,.enroll-card,.invite-card,.special-edition{
+  border:1.5px solid transparent;
+  background-clip:padding-box,border-box;background-origin:padding-box,border-box}
+.lead-doctor{background-image:linear-gradient(var(--card),var(--card)),
+  linear-gradient(120deg,rgba(47,215,224,.5),rgba(109,94,252,.5))}
+.enroll-card,.invite-card{background-image:linear-gradient(var(--card),var(--card)),
+  linear-gradient(120deg,rgba(47,215,224,.55),rgba(109,94,252,.55))}
+.special-edition{background-image:radial-gradient(120% 100% at 100% 0%,#173e63,var(--midnight)),
+  linear-gradient(120deg,rgba(47,215,224,.55),rgba(109,94,252,.55))}
+
+/* footer gradient hairline */
+.site-footer{position:relative}
+.site-footer::before{content:"";position:absolute;top:0;left:0;right:0;height:1.5px;
+  background:var(--grad-neural);opacity:.45}
 
 /* =========================================================
    REVEAL ANIMATION
