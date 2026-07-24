@@ -521,7 +521,6 @@ def home_body():
         <div class="orb-card brain-card">
           <canvas id="brainCanvas" role="img" aria-label="Interactive three-dimensional model of a human brain, rendered as a constellation of glowing connected points"></canvas>
         </div>
-        <div class="orb-badge reveal"><strong>Est. in the heart of Palm Beach</strong><span>A dedicated neurological research center</span></div>
       </div>
       <div class="about-copy">
         <p class="eyebrow reveal"><span class="eyebrow-dot"></span>Who we are</p>
