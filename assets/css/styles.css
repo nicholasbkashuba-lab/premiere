@@ -872,6 +872,53 @@ h2.on-dark em,.why h2 em,.mission blockquote em{
   background:var(--grad-neural);opacity:.45}
 
 /* =========================================================
+   EDITORIAL DRAMA — giant watermark words, gradient tiles
+   ========================================================= */
+.giant-word{position:absolute;left:50%;top:clamp(6px,1.6vw,18px);transform:translateX(-50%);z-index:0;
+  font-family:"Fraunces",serif;font-style:italic;font-weight:400;
+  font-size:clamp(4.2rem,11vw,9.5rem);line-height:1;letter-spacing:-.02em;white-space:nowrap;
+  pointer-events:none;user-select:none;color:transparent;
+  -webkit-text-stroke:1.5px rgba(14,42,71,.08)}
+.giant-word.on-dark-word{-webkit-text-stroke:1.5px rgba(255,255,255,.07)}
+.faq,.events,.newsletter{overflow:hidden}
+
+/* gradient icon tiles — colorful, premium */
+.rcard-icon{background:linear-gradient(140deg,var(--teal),var(--violet));color:#fff;border:none;
+  box-shadow:0 12px 24px -10px rgba(47,215,224,.55)}
+.rcard:hover .rcard-icon{color:#fff}
+.rcard:nth-child(2) .rcard-icon{background:linear-gradient(140deg,#4f8ef7,var(--violet));
+  box-shadow:0 12px 24px -10px rgba(109,94,252,.55)}
+.rcard:nth-child(3) .rcard-icon{background:var(--grad-warm);
+  box-shadow:0 12px 24px -10px rgba(242,166,90,.55)}
+.rcard:nth-child(4) .rcard-icon{background:linear-gradient(140deg,var(--violet),var(--teal));
+  box-shadow:0 12px 24px -10px rgba(109,94,252,.5)}
+.ev-ic{background:linear-gradient(140deg,var(--teal),var(--violet));color:#fff;border:none;
+  box-shadow:0 10px 20px -9px rgba(47,215,224,.5)}
+.events-list li:nth-child(2) .ev-ic{background:var(--grad-warm);box-shadow:0 10px 20px -9px rgba(242,166,90,.5)}
+.events-list li:nth-child(3) .ev-ic{background:linear-gradient(140deg,#4f8ef7,var(--violet));box-shadow:0 10px 20px -9px rgba(109,94,252,.5)}
+
+/* premium gradient-border outline buttons */
+.btn-outline{border:1.5px solid transparent;color:var(--ink);
+  background:linear-gradient(var(--card),var(--card)) padding-box,
+             linear-gradient(120deg,rgba(47,215,224,.65),rgba(109,94,252,.65)) border-box}
+.btn-outline:hover{border-color:transparent;color:var(--teal-ink);transform:translateY(-3px);
+  box-shadow:0 14px 28px -14px rgba(47,215,224,.45);
+  background:linear-gradient(var(--card),var(--card)) padding-box,
+             var(--grad-neural) border-box}
+
+/* amber warmth in the marquee + step dots pop */
+.marquee-track i{color:var(--amber)}
+.step-dot{box-shadow:0 10px 24px -8px rgba(47,215,224,.75),0 0 0 6px rgba(47,215,224,.08)}
+
+/* soft color glows on remaining flat sections */
+.faq::after,.events::after{content:"";position:absolute;z-index:0;pointer-events:none;
+  width:min(44vw,560px);height:min(44vw,560px);border-radius:50%}
+.faq::after{top:-8%;left:-8%;background:radial-gradient(circle,rgba(47,215,224,.10),transparent 62%)}
+.events::after{bottom:-10%;right:-8%;background:radial-gradient(circle,rgba(242,166,90,.12),transparent 62%)}
+
+@media (max-width:560px){.giant-word{display:none}}
+
+/* =========================================================
    3D PARTICLE BRAIN (Who We Are)
    ========================================================= */
 .brain-card{position:relative;overflow:hidden}

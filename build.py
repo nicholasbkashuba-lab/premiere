@@ -299,6 +299,7 @@ def why_grid():
           <p>{d}</p>
         </article>""" for n, t, d in WHY_CARDS)
     return f"""  <section class="section why">
+    <span class="giant-word on-dark-word" aria-hidden="true">Participate</span>
     <div class="why-bg" aria-hidden="true"></div>
     <div class="wrap">
       <div class="section-head center">
@@ -542,6 +543,7 @@ def home_body():
   </section>
 
   <section class="section research" id="research">
+    <span class="giant-word" aria-hidden="true">Research</span>
     <div class="wrap">
       <div class="section-head center">
         <p class="eyebrow reveal"><span class="eyebrow-dot"></span>Research areas</p>
@@ -569,6 +571,7 @@ def home_body():
   </section>
 
   <section class="section team" id="team">
+    <span class="giant-word" aria-hidden="true">Our Team</span>
     <div class="wrap">
       <div class="section-head center">
         <p class="eyebrow reveal"><span class="eyebrow-dot"></span>Our team</p>
@@ -595,6 +598,7 @@ def home_body():
 {events_section(home=True)}
 {newsletter_section(home=True)}
   <section class="section faq" id="faq">
+    <span class="giant-word" aria-hidden="true">Questions</span>
     <div class="wrap faq-grid">
       <div class="faq-intro">
         <p class="eyebrow reveal"><span class="eyebrow-dot"></span>Common questions</p>
@@ -618,6 +622,7 @@ def home_body():
 # ----------------------------------------------------------------------------
 def events_section(home=False):
     return f"""  <section class="section events" id="events">
+    <span class="giant-word" aria-hidden="true">Community</span>
     <div class="wrap events-grid">
       <div class="events-intro">
         <p class="eyebrow reveal"><span class="eyebrow-dot"></span>Community &amp; events</p>
@@ -659,6 +664,7 @@ def events_section(home=False):
 
 def newsletter_section(home=False):
     return f"""  <section class="section newsletter" id="newsletter">
+    <span class="giant-word" aria-hidden="true">Insights</span>
     <div class="wrap news-grid">
       <div class="news-signup reveal">
         <p class="eyebrow"><span class="eyebrow-dot"></span>Stay connected</p>
@@ -866,6 +872,7 @@ def team_body():
         "neurological care — and supported by coordinators who treat you like family.",
         [("Home", "index.html"), ("Our Team", None)])
     body += f"""  <section class="section team">
+    <span class="giant-word" aria-hidden="true">Our Team</span>
     <div class="wrap">
 {lead_doctor()}      <div class="team-grid">
 {docs}
