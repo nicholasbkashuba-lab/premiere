@@ -14,9 +14,8 @@
 <meta property="og:url" content="https://www.premiereresearchinstitute.com/">
 <meta property="og:image" content="/assets/img/logo-original.jpeg">
 <meta name="twitter:card" content="summary_large_image">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..600;1,9..144,300..500&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="preload" as="font" type="font/woff2" href="/assets/fonts/fraunces-normal-latin.woff2" crossorigin>
+<link rel="preload" as="font" type="font/woff2" href="/assets/fonts/inter-normal-latin.woff2" crossorigin>
 <link rel="stylesheet" href="/assets/css/styles.css">
 <link rel="icon" type="image/png" sizes="32x32" href="/assets/img/favicon-32.png">
 <link rel="icon" type="image/png" sizes="512x512" href="/assets/img/favicon-512.png">
@@ -121,9 +120,11 @@
   <section class="section research" id="research">
     <span class="giant-word" aria-hidden="true">Research</span>
     <div class="wrap">
-      <div class="section-head center">
-        <p class="eyebrow reveal"><span class="eyebrow-dot"></span>Research areas</p>
-        <h2 class="reveal">Four conditions. One <em>relentless focus.</em></h2>
+      <div class="section-head split">
+        <div>
+          <p class="eyebrow reveal"><span class="eyebrow-dot"></span>Research areas</p>
+          <h2 class="reveal">Four conditions. One <em>relentless focus.</em></h2>
+        </div>
         <p class="section-sub reveal">Our active and upcoming studies concentrate on the neurological conditions that
            touch the most families. Explore where you or a loved one might fit.</p>
       </div>
@@ -131,30 +132,38 @@
         <article class="rcard reveal" style="--i:0">
           <div class="rcard-glow" aria-hidden="true"></div>
           <div class="rcard-icon" aria-hidden="true"><svg viewBox="0 0 48 48" width="30" height="30"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M24 6c-6 0-9 4-9 9 0 2-2 3-2 6s2 4 2 6c0 5 3 9 9 9"/><path d="M24 6c6 0 9 4 9 9 0 2 2 3 2 6s-2 4-2 6c0 5-3 9-9 9"/><path d="M24 6v30M18 16h4M26 22h4M18 28h5"/></g></svg></div>
-          <h3>Alzheimer's &amp; Memory Loss</h3>
-          <p>From mild cognitive impairment to moderate Alzheimer's, our memory studies test the next generation of disease-modifying and symptom therapies.</p>
-          <span class="rcard-tag">Now enrolling</span>
+          <div class="rcard-feat">
+            <h3>Alzheimer's &amp; Memory Loss</h3>
+            <p>From mild cognitive impairment to moderate Alzheimer's, our memory studies test the next generation of disease-modifying and symptom therapies.</p>
+            <span class="rcard-tag">Now enrolling</span>
+          </div>
         </article>
         <article class="rcard reveal" style="--i:1">
           <div class="rcard-glow" aria-hidden="true"></div>
           <div class="rcard-icon" aria-hidden="true"><svg viewBox="0 0 48 48" width="30" height="30"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 30c3-2 4-6 4-10 0-7 5-12 12-12s12 5 12 12c0 4 1 8 4 10"/><path d="M14 34c2 3 6 5 10 5s8-2 10-5"/><circle cx="18" cy="20" r="1.6" fill="currentColor" stroke="none"/><circle cx="30" cy="20" r="1.6" fill="currentColor" stroke="none"/></g></svg></div>
-          <h3>Parkinson's Disease</h3>
-          <p>Studies targeting motor symptoms, "off" time, and the psychosis and daily-living challenges that come with Parkinson's progression.</p>
-          <span class="rcard-tag">Now enrolling</span>
+          <div class="rcard-feat">
+            <h3>Parkinson's Disease</h3>
+            <p>Studies targeting motor symptoms, "off" time, and the psychosis and daily-living challenges that come with Parkinson's progression.</p>
+            <span class="rcard-tag">Now enrolling</span>
+          </div>
         </article>
         <article class="rcard reveal" style="--i:2">
           <div class="rcard-glow" aria-hidden="true"></div>
           <div class="rcard-icon" aria-hidden="true"><svg viewBox="0 0 48 48" width="30" height="30"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 24h6l3-8 6 18 5-24 5 16 3-2h8"/></g></svg></div>
-          <h3>Migraine</h3>
-          <p>Trials for both the acute treatment of attacks and the prevention of chronic and episodic migraine, including next-generation therapies.</p>
-          <span class="rcard-tag">Now enrolling</span>
+          <div class="rcard-feat">
+            <h3>Migraine</h3>
+            <p>Trials for both the acute treatment of attacks and the prevention of chronic and episodic migraine, including next-generation therapies.</p>
+            <span class="rcard-tag">Now enrolling</span>
+          </div>
         </article>
         <article class="rcard reveal" style="--i:3">
           <div class="rcard-glow" aria-hidden="true"></div>
           <div class="rcard-icon" aria-hidden="true"><svg viewBox="0 0 48 48" width="30" height="30"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M24 6v36M24 12c-4-3-9-2-11 1M24 12c4-3 9-2 11 1M24 22c-5-3-11-1-13 3M24 22c5-3 11-1 13 3M24 32c-4-2-8-1-10 2M24 32c4-2 8-1 10 2"/></g></svg></div>
-          <h3>Multiple Sclerosis</h3>
-          <p>Research into therapies that slow progression and protect function for people living with relapsing and progressive forms of MS.</p>
-          <span class="rcard-tag">Now enrolling</span>
+          <div class="rcard-feat">
+            <h3>Multiple Sclerosis</h3>
+            <p>Research into therapies that slow progression and protect function for people living with relapsing and progressive forms of MS.</p>
+            <span class="rcard-tag">Now enrolling</span>
+          </div>
         </article>
       </div>
       <div class="section-cta reveal"><a href="/clinical-trials.html" class="btn btn-outline">View all current studies <svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M5 12h14M13 6l6 6-6 6"/></svg></a></div>
@@ -167,9 +176,11 @@
     <span class="giant-word on-dark-word" aria-hidden="true">Participate</span>
     <div class="why-bg" aria-hidden="true"></div>
     <div class="wrap">
-      <div class="section-head center">
-        <p class="eyebrow eyebrow-light reveal"><span class="eyebrow-dot"></span>Why participate</p>
-        <h2 class="on-dark reveal">More than a trial. A <em>different kind of care.</em></h2>
+      <div class="section-head split">
+        <div>
+          <p class="eyebrow eyebrow-light reveal"><span class="eyebrow-dot"></span>Why participate</p>
+          <h2 class="on-dark reveal">More than a trial. A <em>different kind of care.</em></h2>
+        </div>
         <p class="section-sub on-dark reveal">Clinical research offers something standard appointments often can't:
            time, attention, and access to what medicine is about to become.</p>
       </div>
@@ -250,9 +261,11 @@
   <section class="section team" id="team">
     <span class="giant-word" aria-hidden="true">Our Team</span>
     <div class="wrap">
-      <div class="section-head center">
-        <p class="eyebrow reveal"><span class="eyebrow-dot"></span>Our team</p>
-        <h2 class="reveal">Led by neurologists who treat these conditions <em>every day.</em></h2>
+      <div class="section-head split">
+        <div>
+          <p class="eyebrow reveal"><span class="eyebrow-dot"></span>Our team</p>
+          <h2 class="reveal">Led by neurologists who treat these conditions <em>every day.</em></h2>
+        </div>
         <p class="section-sub reveal">Research at Premiere is directed by physicians recognized nationally for their
            work in cognitive and neurological care.</p>
       </div>
@@ -274,31 +287,39 @@
       <div class="team-grid">
         <article class="tcard reveal">
           <div class="tcard-portrait has-photo"><img src="/assets/team/reed-stone.jpg" alt="Reed Stone, MD, FAAN" loading="lazy"></div>
-          <h3>Reed Stone, <span class="tc-suf">MD, FAAN</span></h3>
-          <p class="tc-role">Neuromuscular Specialties</p>
-          <p>Board-certified neurologist focused on the nerve and muscle conditions that affect strength, sensation, and mobility.</p>
-          <a href="/team/reed-stone.html" class="tcard-more">Read bio <svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+          <div class="tcard-body">
+            <h3>Reed Stone, <span class="tc-suf">MD, FAAN</span></h3>
+            <p class="tc-role">Neuromuscular Specialties</p>
+            <p>Board-certified neurologist focused on the nerve and muscle conditions that affect strength, sensation, and mobility.</p>
+            <a href="/team/reed-stone.html" class="tcard-more">Read bio <svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+          </div>
         </article>
         <article class="tcard reveal">
           <div class="tcard-portrait has-photo"><img src="/assets/team/arnaldo-da-silva.jpg" alt="Arnaldo Da Silva, MD" loading="lazy"></div>
-          <h3>Arnaldo Da Silva, <span class="tc-suf">MD</span></h3>
-          <p class="tc-role">Migraine &amp; Headache</p>
-          <p>Specialist in migraine and headache medicine, helping guide acute and preventive treatment studies for chronic and episodic patients.</p>
-          <a href="/team/arnaldo-da-silva.html" class="tcard-more">Read bio <svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+          <div class="tcard-body">
+            <h3>Arnaldo Da Silva, <span class="tc-suf">MD</span></h3>
+            <p class="tc-role">Migraine &amp; Headache</p>
+            <p>Specialist in migraine and headache medicine, helping guide acute and preventive treatment studies for chronic and episodic patients.</p>
+            <a href="/team/arnaldo-da-silva.html" class="tcard-more">Read bio <svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+          </div>
         </article>
         <article class="tcard reveal">
           <div class="tcard-portrait has-photo"><img src="/assets/team/robert-coppola.jpg" alt="Robert Coppola, DO" loading="lazy"></div>
-          <h3>Robert Coppola, <span class="tc-suf">DO</span></h3>
-          <p class="tc-role">Cognitive, Memory Loss &amp; MS</p>
-          <p>Specialist in cognitive and memory disorders and multiple sclerosis, from early evaluation through ongoing, attentive care.</p>
-          <a href="/team/robert-coppola.html" class="tcard-more">Read bio <svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+          <div class="tcard-body">
+            <h3>Robert Coppola, <span class="tc-suf">DO</span></h3>
+            <p class="tc-role">Cognitive, Memory Loss &amp; MS</p>
+            <p>Specialist in cognitive and memory disorders and multiple sclerosis, from early evaluation through ongoing, attentive care.</p>
+            <a href="/team/robert-coppola.html" class="tcard-more">Read bio <svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+          </div>
         </article>
         <article class="tcard reveal">
           <div class="tcard-portrait has-photo"><img src="/assets/team/michael-alosilla.jpg" alt="Michael Alosilla, MD" loading="lazy"></div>
-          <h3>Michael Alosilla, <span class="tc-suf">MD</span></h3>
-          <p class="tc-role">Movement Disorders</p>
-          <p>Movement-disorders specialist focused on Parkinson's disease and the related conditions that affect coordination and control.</p>
-          <a href="/team/michael-alosilla.html" class="tcard-more">Read bio <svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+          <div class="tcard-body">
+            <h3>Michael Alosilla, <span class="tc-suf">MD</span></h3>
+            <p class="tc-role">Movement Disorders</p>
+            <p>Movement-disorders specialist focused on Parkinson's disease and the related conditions that affect coordination and control.</p>
+            <a href="/team/michael-alosilla.html" class="tcard-more">Read bio <svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+          </div>
         </article>
       </div>
       <div class="section-cta reveal"><a href="/team.html" class="btn btn-outline">Meet the full team <svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M5 12h14M13 6l6 6-6 6"/></svg></a></div>

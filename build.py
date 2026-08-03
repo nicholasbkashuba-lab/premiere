@@ -121,9 +121,8 @@ def head(p, title, desc, canonical, og_image=None, page_type="website", extra_he
 <meta property="og:url" content="{canon}">
 <meta property="og:image" content="{og_image}">
 <meta name="twitter:card" content="summary_large_image">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..600;1,9..144,300..500&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="preload" as="font" type="font/woff2" href="{p}assets/fonts/fraunces-normal-latin.woff2" crossorigin>
+<link rel="preload" as="font" type="font/woff2" href="{p}assets/fonts/inter-normal-latin.woff2" crossorigin>
 <link rel="stylesheet" href="{p}assets/css/styles.css">
 <link rel="icon" type="image/png" sizes="32x32" href="{p}assets/img/favicon-32.png">
 <link rel="icon" type="image/png" sizes="512x512" href="{p}assets/img/favicon-512.png">
@@ -302,9 +301,11 @@ def why_grid():
     <span class="giant-word on-dark-word" aria-hidden="true">Participate</span>
     <div class="why-bg" aria-hidden="true"></div>
     <div class="wrap">
-      <div class="section-head center">
-        <p class="eyebrow eyebrow-light reveal"><span class="eyebrow-dot"></span>Why participate</p>
-        <h2 class="on-dark reveal">More than a trial. A <em>different kind of care.</em></h2>
+      <div class="section-head split">
+        <div>
+          <p class="eyebrow eyebrow-light reveal"><span class="eyebrow-dot"></span>Why participate</p>
+          <h2 class="on-dark reveal">More than a trial. A <em>different kind of care.</em></h2>
+        </div>
         <p class="section-sub on-dark reveal">Clinical research offers something standard appointments often can't:
            time, attention, and access to what medicine is about to become.</p>
       </div>
@@ -423,10 +424,12 @@ def render_tcards():
     for d in DOCTORS:
         out.append(f"""        <article class="tcard reveal">
           {_tcard_portrait(d)}
-          <h3>{d['name']}, <span class="tc-suf">{d['suf']}</span></h3>
-          <p class="tc-role">{d['spec']}</p>
-          <p>{d['short']}</p>
-          <a href="{{p}}team/{d['slug']}.html" class="tcard-more">Read bio {IC_ARROW}</a>
+          <div class="tcard-body">
+            <h3>{d['name']}, <span class="tc-suf">{d['suf']}</span></h3>
+            <p class="tc-role">{d['spec']}</p>
+            <p>{d['short']}</p>
+            <a href="{{p}}team/{d['slug']}.html" class="tcard-more">Read bio {IC_ARROW}</a>
+          </div>
         </article>""")
     return "\n".join(out)
 
@@ -463,9 +466,11 @@ def home_body():
         rcards += f"""        <article class="rcard reveal" style="--i:{i}">
           <div class="rcard-glow" aria-hidden="true"></div>
           <div class="rcard-icon" aria-hidden="true">{icon_condition(k)}</div>
-          <h3>{t}</h3>
-          <p>{d}</p>
-          <span class="rcard-tag">Now enrolling</span>
+          <div class="rcard-feat">
+            <h3>{t}</h3>
+            <p>{d}</p>
+            <span class="rcard-tag">Now enrolling</span>
+          </div>
         </article>
 """
     faqs = [
@@ -545,9 +550,11 @@ def home_body():
   <section class="section research" id="research">
     <span class="giant-word" aria-hidden="true">Research</span>
     <div class="wrap">
-      <div class="section-head center">
-        <p class="eyebrow reveal"><span class="eyebrow-dot"></span>Research areas</p>
-        <h2 class="reveal">Four conditions. One <em>relentless focus.</em></h2>
+      <div class="section-head split">
+        <div>
+          <p class="eyebrow reveal"><span class="eyebrow-dot"></span>Research areas</p>
+          <h2 class="reveal">Four conditions. One <em>relentless focus.</em></h2>
+        </div>
         <p class="section-sub reveal">Our active and upcoming studies concentrate on the neurological conditions that
            touch the most families. Explore where you or a loved one might fit.</p>
       </div>
@@ -573,9 +580,11 @@ def home_body():
   <section class="section team" id="team">
     <span class="giant-word" aria-hidden="true">Our Team</span>
     <div class="wrap">
-      <div class="section-head center">
-        <p class="eyebrow reveal"><span class="eyebrow-dot"></span>Our team</p>
-        <h2 class="reveal">Led by neurologists who treat these conditions <em>every day.</em></h2>
+      <div class="section-head split">
+        <div>
+          <p class="eyebrow reveal"><span class="eyebrow-dot"></span>Our team</p>
+          <h2 class="reveal">Led by neurologists who treat these conditions <em>every day.</em></h2>
+        </div>
         <p class="section-sub reveal">Research at Premiere is directed by physicians recognized nationally for their
            work in cognitive and neurological care.</p>
       </div>
